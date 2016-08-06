@@ -1,0 +1,5 @@
+# people you dont want to unfollow, no matter what
+# For me this is really good friends (who don't post much) and news orgs
+exceptions:
+  - "twitter"
+  - "POTUS"
