@@ -9,14 +9,15 @@ def main
   config     = YAML.load_file('yaml/config.yaml')
   exceptions = YAML.load_file('yaml/exceptions.yaml')
 
-  Login.do(config)
   client     = setup_client(config)
   you        = client.user
   following  = client.friend_ids(you.id).to_a
   offset     = following.length*config['offset']/100
   following  = following.slice(offset, following.length)
-  check      = Check.new(client, you)
+  session    = Login.do(config)
+  check      = Check.new(client, you, session)
   unfollow   = Unfollow.new(client)
+
   puts "Starting script offset by the #{offset} (#{config['offset']}%) most recent follows"
 
   following.shuffle.each_with_index do |id,i|

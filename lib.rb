@@ -37,21 +37,23 @@ class Login
     session.find(".js-username-field").set(config['username'])
     session.find(".js-password-field").set(config['password'])
     session.find(".signin-wrapper .submit").click
+
+    return session
   end
 end
 
 
 class Check
-  include Capybara::DSL
-  def initialize(client, you)
-    @client = client
-    @you = you
+  def initialize(client, you, session)
+    @client  = client
+    @you     = you
+    @session = session
   end
 
   def havent_talked_to(them)
     begin
-      visit("/search?f=tweets&q=@#{@you.screen_name}+@#{them.screen_name}")
-      find("ol#stream-items-id li.stream-item:first-child")
+      @session.visit("/search?f=tweets&q=@#{@you.screen_name}+@#{them.screen_name}")
+      @session.find("ol#stream-items-id li.stream-item:first-child")
       return false
     rescue Capybara::ElementNotFound
       return true
@@ -60,8 +62,8 @@ class Check
 
   def dont_follow_you(them)
     begin
-      visit("/@#{them.screen_name}")
-      find(".ProfileHeaderCard .FollowStatus")
+      @session.visit("/@#{them.screen_name}")
+      @session.find(".ProfileHeaderCard .FollowStatus")
       return false
     rescue Capybara::ElementNotFound
       return true
