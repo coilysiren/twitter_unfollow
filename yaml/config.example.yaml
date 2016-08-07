@@ -1,6 +1,7 @@
 ---
 # start working from % of your most recent follows
 # ex: for 1000 follows, 5 = ignore the last 50 accounts you followed
+# feel free to leave at 5
 offset: 5
 
 # what you use at https://twitter.com/login
@@ -9,6 +10,7 @@ username: "XXXXXXXXXXXX"
 password: "XXXXXXXXXXXX"
 
 # from https://apps.twitter.com/
+# create a generic testing application if you need to
 # DONT LET THIS GET POSTED PUBLICLY
 consumer_key: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 consumer_secret: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
