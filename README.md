@@ -5,7 +5,7 @@ Use to automatically unfollow
 * people you haven't talked to publically, or
 * people who haven't posted in 3 months
 
-**Only working on Ubuntu 14!**
+**Only working on Ubuntu 14**
 
 ## setup
 
@@ -16,4 +16,4 @@ bundle install
 ruby main.rb
 ```
 
-(some more assembly may be required!)
+(some more assembly may be required)
